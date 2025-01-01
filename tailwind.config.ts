@@ -35,9 +35,8 @@ const config: Config = {
         xxs: "0.625rem",
       },
       colors: {
-        primary: "#0E2D65",
-        secondary: "#B91C1C",
-        gray: "#6B7280",
+        primary: "#239CF9",
+        secondary: "#FFA500",
         light: "#FFFFFF",
         dark: "#181C14",
       },
