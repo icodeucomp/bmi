@@ -23,7 +23,7 @@ export const LoginForm = () => {
   };
 
   return (
-    <div className="p-8 bg-light rounded-xl">
+    <div className="p-8 bg-light rounded-xl w-full">
       <div className="flex flex-col items-center gap-4 mt-4 text-dark">
         <Img src="/icons/logo.svg" alt="logo" className="size-36" />
         <span className="text-3xl font-bold">Daftar</span>
