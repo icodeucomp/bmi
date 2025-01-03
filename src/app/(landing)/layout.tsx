@@ -18,7 +18,7 @@ export default function LandingLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} flex flex-col min-h-screen overflow-x-hidden`}>
-        <Background src="/images/jogging.webp" alt="login background" className="justify-between h-full min-h-screen">
+        <Background src="/images/jogging.webp" alt="login background" className="justify-between h-full min-h-screen bg-dark/40">
           <Container>{children}</Container>
         </Background>
       </body>
