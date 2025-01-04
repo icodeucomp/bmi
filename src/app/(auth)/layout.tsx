@@ -19,7 +19,7 @@ export default function AuthLayout({
   return (
     <html lang="en">
       <body className={`${poppins.className} grid grid-cols-1 md:grid-cols-2 overflow-x-hidden`}>
-        <Background src="/images/run.webp" alt="login background" className="flex-col justify-between hidden h-full p-12 md:flex bg-black/50" imgClassName="object-top">
+        <Background src="/images/run.webp" alt="login background" className="flex-col justify-between hidden h-full p-12 md:flex bg-dark/50" imgClassName="object-top">
           <div className="flex items-center gap-4 text-light">
             <Img src="/icons/logo.svg" alt="logo" className="size-14" />
             <span className="text-2xl font-bold">BodyCalc</span>

@@ -1,8 +1,8 @@
 import { InputProps } from "@/types";
 
-export const Input = ({ label, type = "text", placeholder, value, onChange, icon, id }: InputProps) => {
+export const Input = ({ label, type = "text", placeholder, value, onChange, icon, id, theme = "dark" }: InputProps) => {
   return (
-    <div className="space-y-1 text-dark">
+    <div className={`space-y-1 text-${theme}`}>
       <label>{label}</label>
 
       <div className="relative">

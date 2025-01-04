@@ -8,4 +8,5 @@ export interface InputProps {
   value: string;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: React.ReactNode;
+  theme?: "light" | "dark";
 }

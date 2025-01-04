@@ -63,4 +63,10 @@
 }
 
 @layer components {
+  .popover {
+    @apply absolute py-2 -translate-x-1/2 border rounded-lg shadow-lg left-1/2 w-full bg-light text-dark z-100 overflow-y-auto scrollbar h-80;
+  }
+  .dropdown {
+    @apply relative flex items-center gap-2 p-2 font-medium rounded-lg cursor-pointer sm:px-4 sm:gap-8 border bg-light text-gray-400;
+  }
 }
