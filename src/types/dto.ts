@@ -10,3 +10,10 @@ export interface registerRequest {
   password: string;
   gender: "male" | "female" | null;
 }
+
+export interface BmiRequest {
+  gender: "male" | "female" | null;
+  height: string;
+  weight: string;
+  dateOfBirth: string;
+}

@@ -4,22 +4,28 @@ import * as React from "react";
 
 import { useForm } from "@/hooks";
 
+import { DatePicker } from "./date-picker";
+
 import { Button, Img, Input } from "@/components";
 
-import { registerRequest } from "@/types";
-import DatePicker from "./date-picker";
+import { BmiRequest } from "@/types";
 
-const initValue = { email: "", password: "", firstName: "", lastName: "", gender: null };
+const initValue: BmiRequest = { dateOfBirth: "", gender: null, height: "", weight: "" };
 
 export const BmiForm = () => {
-  const [formData, handleFormData] = useForm<registerRequest>(initValue);
-  const [gender, setGender] = React.useState<registerRequest["gender"]>(null);
+  const [formData, handleFormData] = useForm<BmiRequest>(initValue);
+  const [gender, setGender] = React.useState<BmiRequest["gender"]>(null);
+  const [dateOfBirth, setDateOfBirth] = React.useState<BmiRequest["dateOfBirth"]>("");
+
+  const handleDateChange = (date: { year: string; month: string; day: string }) => {
+    setDateOfBirth(`${date.year}-${date.month}-${date.day}`);
+  };
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    const { email, firstName, lastName, password } = formData;
-    const body: registerRequest = { email, password, firstName, lastName, gender };
-    console.log(body);
+    console.log("🚀 ~ BmiForm ~ formData:", formData);
+    console.log("🚀 ~ BmiForm ~ gender:", gender);
+    console.log("🚀 ~ BmiForm ~ dateOfBirth:", dateOfBirth);
   };
 
   return (
@@ -43,9 +49,9 @@ export const BmiForm = () => {
             Perempuan
           </Button>
         </div>
-        <DatePicker />
-        <Input label="Berat Badan" type="text" id="weight" placeholder="Kg" value={formData.email} onChange={handleFormData} theme="light" />
-        <Input label="Tinggi Badan" type="text" id="height" placeholder="Cm" value={formData.password} onChange={handleFormData} theme="light" />
+        <DatePicker onDateChange={handleDateChange} />
+        <Input label="Berat Badan" type="number" id="weight" placeholder="Kg" value={formData.weight} onChange={handleFormData} theme="light" />
+        <Input label="Tinggi Badan" type="number" id="height" placeholder="Cm" value={formData.height} onChange={handleFormData} theme="light" />
         <div className="space-y-4">
           <Button type="submit" className="w-full rounded-lg bg-secondary text-light">
             Daftar

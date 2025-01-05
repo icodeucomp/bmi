@@ -5,7 +5,7 @@ export interface InputProps {
   placeholder: string;
   id: string;
   type: HTMLInputTypeAttribute;
-  value: string;
+  value: string | number | undefined;
   onChange: (e: React.ChangeEvent<HTMLInputElement>) => void;
   icon?: React.ReactNode;
   theme?: "light" | "dark";

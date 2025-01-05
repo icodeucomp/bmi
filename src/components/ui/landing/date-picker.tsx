@@ -1,14 +1,15 @@
 import { useToggleState } from "@/hooks";
-import React, { useState } from "react";
+import * as React from "react";
 import { IoMdArrowDropdown } from "react-icons/io";
 
 interface DropdownSelectInputProps {
   label: string;
-  dates: number[] | string[];
-  handleFiltered: (value: number | string) => void;
+  dates: string[];
+  handleDateChange: (type: "year" | "month" | "day", value: string) => void;
+  type: "year" | "month" | "day";
 }
 
-const DropdownSelectInput = ({ label, dates, handleFiltered }: DropdownSelectInputProps) => {
+const DropdownSelectInput = ({ label, dates, handleDateChange, type }: DropdownSelectInputProps) => {
   const [ref, popover, togglePopover] = useToggleState(false);
 
   return (
@@ -18,7 +19,7 @@ const DropdownSelectInput = ({ label, dates, handleFiltered }: DropdownSelectInp
       {popover && (
         <div className={`popover top-12`}>
           {dates?.map((date, index) => (
-            <button key={index} onClick={() => handleFiltered(date)} className="w-full px-4 py-2 text-start hover:bg-gray/20">
+            <button key={index} onClick={() => handleDateChange(type, date)} className="w-full py-2 text-center border-b hover:bg-gray-200">
               {date}
             </button>
           ))}
@@ -28,32 +29,33 @@ const DropdownSelectInput = ({ label, dates, handleFiltered }: DropdownSelectInp
   );
 };
 
-const DatePicker: React.FC = () => {
-  const [date, setDate] = useState<number | string | null>(null);
-  const [month, setMonth] = useState<number | string | null>(null);
-  const [year, setYear] = useState<number | string | null>(null);
-
-  const dates = Array.from({ length: 31 }, (_, i) => i + 1);
+export const DatePicker = ({ onDateChange }: { onDateChange: (date: { year: string; month: string; day: string }) => void }) => {
+  const currentYear = new Date().getFullYear();
+  const years = Array.from({ length: 100 }, (_, i) => (currentYear - i).toString());
   const months = ["January", "February", "March", "April", "May", "June", "July", "August", "September", "October", "November", "December"];
-  const years = Array.from({ length: 100 }, (_, i) => new Date().getFullYear() - i);
+  const days = Array.from({ length: 31 }, (_, i) => (i + 1).toString().padStart(2, "0"));
 
-  const handleFilterDate = (value: number | string) => {
-    setDate(value);
-  };
-  const handleFilterMonth = (value: number | string) => {
-    setMonth(value);
-  };
-  const handleFilterYear = (value: number | string) => {
-    setYear(value);
+  const [selectedYear, setSelectedYear] = React.useState<string>("");
+  const [selectedMonth, setSelectedMonth] = React.useState<string>("");
+  const [selectedDay, setSelectedDay] = React.useState<string>("");
+
+  const handleDateChange = (type: "year" | "month" | "day", value: string) => {
+    if (type === "year") setSelectedYear(value);
+    if (type === "month") setSelectedMonth(value);
+    if (type === "day") setSelectedDay(value);
+
+    onDateChange({
+      year: type === "year" ? value : selectedYear,
+      month: type === "month" ? value : selectedMonth,
+      day: type === "day" ? value : selectedDay,
+    });
   };
 
   return (
     <div className="grid grid-cols-3 gap-4">
-      <DropdownSelectInput dates={dates} handleFiltered={handleFilterDate} label={date ? date.toString() : "Pilih Tanggal"} />
-      <DropdownSelectInput dates={months} handleFiltered={handleFilterMonth} label={month ? month.toString() : "Pilih Bulan"} />
-      <DropdownSelectInput dates={years} handleFiltered={handleFilterYear} label={year ? year.toString() : "Pilih Tahun"} />
+      <DropdownSelectInput dates={years} handleDateChange={handleDateChange} type="year" label={selectedYear ? selectedYear : "Pilih Tahun"} />
+      <DropdownSelectInput dates={months} handleDateChange={handleDateChange} type="month" label={selectedMonth ? selectedMonth : "Pilih Bulan"} />
+      <DropdownSelectInput dates={days} handleDateChange={handleDateChange} type="day" label={selectedDay ? selectedDay : "Pilih Tanggal"} />
     </div>
   );
 };
-
-export default DatePicker;
