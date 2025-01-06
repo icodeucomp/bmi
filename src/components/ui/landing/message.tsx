@@ -2,7 +2,7 @@ import { Button, Img } from "@/components";
 
 export const Message = () => {
   return (
-    <div className="space-y-4">
+    <div className="space-y-8">
       <div className="flex items-center">
         <Img src="/images/bicycle.webp" alt="bicycle race" className="aspect-square w-36 rounded-3xl border-4" cover />
         <Img src="/images/vegetable.webp" alt="vegetable" className="aspect-square w-36 rounded-full border-4" cover />

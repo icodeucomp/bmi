@@ -4,34 +4,41 @@ import * as React from "react";
 
 import { useForm } from "@/hooks";
 
-import { DatePicker } from "./date-picker";
-
 import { Button, Img, Input } from "@/components";
 
 import { BmiRequest } from "@/types";
+import { Result } from "./result";
+import { motion } from "framer-motion";
 
 const initValue: BmiRequest = { dateOfBirth: "", gender: null, height: "", weight: "" };
 
 export const BmiForm = () => {
   const [formData, handleFormData] = useForm<BmiRequest>(initValue);
   const [gender, setGender] = React.useState<BmiRequest["gender"]>(null);
-  const [dateOfBirth, setDateOfBirth] = React.useState<BmiRequest["dateOfBirth"]>("");
-
-  const handleDateChange = (date: { year: string; month: string; day: string }) => {
-    setDateOfBirth(`${date.year}-${date.month}-${date.day}`);
-  };
+  const [isSubmitting, setIsSubmitting] = React.useState<boolean>(false);
 
   const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
-    console.log("🚀 ~ BmiForm ~ formData:", formData);
-    console.log("🚀 ~ BmiForm ~ gender:", gender);
-    console.log("🚀 ~ BmiForm ~ dateOfBirth:", dateOfBirth);
+    setIsSubmitting(true);
+    const { dateOfBirth, height, weight } = formData;
+    if (dateOfBirth === "" || height === "" || weight === "" || gender === null) {
+      return;
+    }
+    const body = { gender, height, weight, dateOfBirth };
+    console.log(body);
   };
 
   return (
-    <div className="p-4 lg:p-8 bg-light/20 backdrop-blur rounded-xl w-full">
-      <form onSubmit={handleSubmit} className="mt-8 space-y-6">
-        <div className="flex gap-4 w-full">
+    <div className="relative w-full p-4 border lg:p-14 bg-light/20 backdrop-blur rounded-xl overflow-hidden">
+      <motion.div
+        className={`absolute inset-0 bg-secondary z-10 ${isSubmitting ? "block" : "hidden"}`}
+        initial={{ borderRadius: "50%", scale: 0 }}
+        animate={isSubmitting ? { borderRadius: "0%", scale: 20 } : {}}
+        transition={{ duration: 1, ease: "easeInOut" }}
+        onAnimationComplete={() => setIsSubmitting(false)}
+      />
+      <form onSubmit={handleSubmit} className="my-4 space-y-6">
+        <div className="flex w-full gap-4">
           <Button
             type="button"
             onClick={() => setGender("male")}
@@ -49,15 +56,14 @@ export const BmiForm = () => {
             Perempuan
           </Button>
         </div>
-        <DatePicker onDateChange={handleDateChange} />
+        <Input label="Tanggal Lahir" type="date" id="dateOfBirth" placeholder="" value={formData.dateOfBirth} onChange={handleFormData} theme="light" />
         <Input label="Berat Badan" type="number" id="weight" placeholder="Kg" value={formData.weight} onChange={handleFormData} theme="light" />
         <Input label="Tinggi Badan" type="number" id="height" placeholder="Cm" value={formData.height} onChange={handleFormData} theme="light" />
-        <div className="space-y-4">
-          <Button type="submit" className="w-full rounded-lg bg-secondary text-light">
-            Daftar
-          </Button>
-        </div>
+        <Button type="submit" className="w-full rounded-3xl bg-secondary text-light hover:bg-secondary/90 hover:tracking-wider">
+          Hitung!
+        </Button>
       </form>
+      {/* <Result category="Obesity" value={23.1} /> */}
     </div>
   );
 };

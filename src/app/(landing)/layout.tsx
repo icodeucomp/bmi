@@ -24,7 +24,7 @@ export default function LandingLayout({
         <Background src="/images/jogging.webp" alt="login background" className="justify-between h-full min-h-screen bg-dark/40">
           <Container>
             <Navbar />
-            <div className="grid grid-cols-2 gap-8 mt-16">
+            <div className="grid grid-cols-2 gap-8 mt-20">
               <Message />
               {children}
             </div>

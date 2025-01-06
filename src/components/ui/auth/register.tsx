@@ -26,7 +26,7 @@ export const RegisterForm = () => {
   };
 
   return (
-    <div className="p-4 lg:p-8 bg-light rounded-xl w-full">
+    <div className="w-full p-4 lg:p-8 bg-light rounded-xl">
       <div className="flex flex-col items-center gap-4 mt-4 text-dark">
         <Img src="/icons/logo.svg" alt="logo" className="size-36" />
         <span className="text-3xl font-bold">Daftar</span>
@@ -56,11 +56,11 @@ export const RegisterForm = () => {
         <Input label="Email" type="email" id="email" placeholder="johndoe@gmail.com" value={formData.email} onChange={handleFormData} />
         <Input label="Password" type="password" id="password" placeholder="******" value={formData.password} onChange={handleFormData} />
         <div className="space-y-4">
-          <Button type="submit" className="w-full rounded-lg bg-secondary text-light">
+          <Button type="submit" className="w-full rounded-3xl bg-secondary text-light">
             Daftar
           </Button>
           <p className="font-semibold text-center">atau</p>
-          <Button type="button" className="flex items-center justify-center w-full gap-2 rounded-lg bg-dark text-light">
+          <Button type="button" className="flex items-center justify-center w-full gap-2 rounded-3xl bg-dark text-light">
             <FcGoogle size={20} />
             Daftar dengan Google
           </Button>
