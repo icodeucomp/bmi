@@ -1,6 +1,10 @@
+"use client";
+
 import { Button, Img } from "@/components";
-export const Result = ({ value, category }: { value: number; category: string }) => {
+
+export const ResultBmi = ({ value }: { value: number }) => {
   const color = value >= 30 ? "text-red-600" : value < 30 && value > 23 ? "text-yellow-600" : value <= 23 && value > 18.5 ? "text-green-600" : "text-gray-600";
+  const category = value >= 30 ? "Obesity" : value < 30 && value > 23 ? "Overweight" : value <= 23 && value > 18.5 ? "Ideal" : "Underweight";
   return (
     <div className="space-y-8">
       <div className="space-y-4">
@@ -8,7 +12,7 @@ export const Result = ({ value, category }: { value: number; category: string })
           <Img src="/icons/note.svg" alt="note icon" className="w-10 aspect-square" />
           <h3 className="text-4xl font-semibold">Klik Selanjutnya!</h3>
         </div>
-        <p className="leading-normal">Jika kamu ingin menurunkan berat badan, kamu bisa menggunakan kalkulator kaloti untuk menentukan kebutuhan kalori kamu beserta tips nya!</p>
+        <p className="leading-normal">Jika kamu ingin menurunkan berat badan, kamu bisa menggunakan kalkulator kalori untuk menentukan kebutuhan kalori kamu beserta tips nya!</p>
       </div>
       <div className="px-4 py-8 space-y-8 bg-light rounded-3xl">
         <div className="space-y-2 text-center">
@@ -39,7 +43,9 @@ export const Result = ({ value, category }: { value: number; category: string })
           </table>
         </div>
         <div className="flex gap-4">
-          <Button className="w-full border-2 rounded-3xl bg-light border-secondary hover:bg-secondary text-secondary hover:text-light">Kembali</Button>
+          <Button onClick={() => window.location.reload()} className="w-full border-2 rounded-3xl bg-light border-secondary hover:bg-secondary text-secondary hover:text-light">
+            Kembali
+          </Button>
           <Button className="w-full rounded-3xl bg-secondary text-light hover:tracking-wider">Selanjutnya</Button>
         </div>
       </div>
