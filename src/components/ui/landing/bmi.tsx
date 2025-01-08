@@ -34,7 +34,7 @@ export const BmiForm = () => {
     }
     setTimeout(() => {
       const imtCalc = +weight / (+height / 100) ** 2;
-      setImtCalcResult(Math.ceil(imtCalc));
+      setImtCalcResult(+imtCalc.toFixed(2));
       setIsResult(true);
     }, 2000);
   };

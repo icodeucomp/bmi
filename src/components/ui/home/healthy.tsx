@@ -49,7 +49,10 @@ export const HealthyForm = () => {
       const birthDate = new Date(dateOfBirth);
       const age = calculateAge(birthDate);
       const user = { activityLevel, age, gender, height: +height, weight: +weight };
+      const imt = +weight / (+height / 100) ** 2;
       const dailyCalories = calculateTDEE(user);
+      localStorage.setItem("tdEE", dailyCalories.toFixed(2).toString());
+      localStorage.setItem("imt", imt.toFixed(2).toString());
       setDescription(`Kebutuhan Kalori harian kamu adalah ${Math.ceil(dailyCalories)} kkal/hari.`);
     }, 2000);
   };

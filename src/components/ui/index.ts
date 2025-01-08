@@ -6,3 +6,4 @@ export * from "./landing/message";
 export * from "./home/healthy";
 export * from "./tips/choose";
 export * from "./tips/healthy-food";
+export * from "./tips/sports";

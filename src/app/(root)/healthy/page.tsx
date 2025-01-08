@@ -1,5 +1,6 @@
-import { Background, Container } from "@/components";
+import { Background, Container, Img } from "@/components";
 import { NavbarHome } from "@/components/ui/navbar";
+import { Slice } from "./slice";
 
 export default function HealthyPage() {
   return (
@@ -7,8 +8,12 @@ export default function HealthyPage() {
       <div className="bg-light">
         <NavbarHome />
       </div>
-      <Container>
-        <div>test</div>
+      <Container className="mt-20">
+        <div className="grid grid-cols-2 gap-8">
+          <Img src="/icons/logo.svg" alt="logo apps" className="mx-auto aspect-square w-72" />
+
+          <Slice />
+        </div>
       </Container>
     </Background>
   );

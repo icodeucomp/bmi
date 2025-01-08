@@ -9,23 +9,23 @@ export const Choose = () => {
   return (
     <div className="mt-20 space-y-12">
       <div className="space-y-8 text-light">
-        <h3 className="text-center font-bold text-4xl max-w-screen-md mx-auto">Anda dapat melihat Tips makan sehat dan tips olahraga.</h3>
-        <p className="text-center text-lg max-w-screen-lg mx-auto font-medium">
+        <h3 className="max-w-screen-md mx-auto text-4xl font-bold text-center">Anda dapat melihat Tips makan sehat dan tips olahraga.</h3>
+        <p className="max-w-screen-lg mx-auto text-lg font-medium text-center">
           Pelajari cara menjaga keseimbangan kalori tubuh melalui pola makan sehat dan olahraga teratur. Dapatkan tips praktis untuk memenuhi kebutuhan energi harian Anda dan mendukung gaya hidup yang
           lebih sehat!
         </p>
       </div>
       <div className="flex items-center justify-center gap-8">
-        <div className="bg-light/20 backdrop-blur rounded-3xl p-8">
-          <div className="bg-light p-6 rounded-3xl space-y-2 cursor-pointer" onClick={() => router.push("/alyysa-zahra/tips/healthy-food")}>
+        <div className="p-8 bg-light/20 backdrop-blur rounded-3xl hover:bg-secondary hover:backdrop-blur-none">
+          <div className="p-6 space-y-2 cursor-pointer bg-light rounded-3xl" onClick={() => router.push("/alyysa-zahra/tips/healthy-food")}>
             <Img src="/images/diet-animation.webp" alt="diet animation" className="aspect-square w-52" />
-            <h5 className="text-dark font-semibold text-lg text-center">Tips Makanan Sehat</h5>
+            <h5 className="text-lg font-semibold text-center text-dark">Tips Makanan Sehat</h5>
           </div>
         </div>
-        <div className="bg-light/20 backdrop-blur rounded-3xl p-8">
-          <div className="bg-light p-6 rounded-3xl space-y-2 cursor-pointer" onClick={() => router.push("/alyysa-zahra/tips/sports")}>
+        <div className="p-8 bg-light/20 backdrop-blur rounded-3xl hover:bg-secondary hover:backdrop-blur-none">
+          <div className="p-6 space-y-2 cursor-pointer bg-light rounded-3xl" onClick={() => router.push("/alyysa-zahra/tips/sports")}>
             <Img src="/images/treadmill-animation.webp" alt="diet animation" className="aspect-square w-52" />
-            <h5 className="text-dark font-semibold text-lg text-center">Tips Olahraga</h5>
+            <h5 className="text-lg font-semibold text-center text-dark">Tips Olahraga</h5>
           </div>
         </div>
       </div>
