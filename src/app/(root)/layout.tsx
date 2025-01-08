@@ -3,8 +3,6 @@ import type { Metadata } from "next";
 import { Poppins } from "next/font/google";
 
 import "../globals.css";
-import { Background, Container } from "@/components";
-import { NavbarHome } from "@/components/ui/navbar";
 
 const poppins = Poppins({
   weight: ["300", "400", "500", "600", "700", "800", "900"],
@@ -25,14 +23,7 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en">
-      <body className={`${poppins.className} flex flex-col min-h-screen overflow-x-hidden`}>
-        <Background src="/images/apples-nuts.webp" alt="home background" className="justify-between h-full min-h-screen pb-12 bg-dark/40">
-          <div className="bg-light">
-            <NavbarHome />
-          </div>
-          <Container>{children}</Container>
-        </Background>
-      </body>
+      <body className={`${poppins.className} flex flex-col min-h-screen overflow-x-hidden`}>{children}</body>
     </html>
   );
 }

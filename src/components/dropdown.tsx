@@ -11,8 +11,10 @@ export const Dropdown = ({ parentClassName, className, data, handleFiltered, sel
 
   const selected = data?.find((item) => item.value === selectedValue);
 
+  const styleDropdown = selected?.value === null ? "text-gray-400" : "text-dark";
+
   return (
-    <span ref={ref} className={`dropdown ${parentClassName ?? ""} ${popover ? "ring-2 ring-secondary" : "border-secondary"}`} onClick={togglePopover}>
+    <span ref={ref} className={`dropdown ${parentClassName ?? ""} ${styleDropdown} ${popover ? "ring-2 ring-secondary" : "border-secondary"}`} onClick={togglePopover}>
       {selected?.display}
       <PiCaretDownBold size={20} className={`duration-300 absolute right-2 fill-dark ${popover && "rotate-180"}`} />
       {popover && (

@@ -1,10 +1,20 @@
 "use client";
 
+import { useRouter } from "next/navigation";
+
 import { motion } from "framer-motion";
 
 import { Button, Img } from "@/components";
 
-export const ResultHealthy = ({ description, isLoading, isSubmitting, onSubmitting }: { description: string; isLoading: boolean; isSubmitting: boolean; onSubmitting: () => void }) => {
+interface ResultHealthyProps {
+  description: string;
+  isLoading: boolean;
+  isSubmitting: boolean;
+  onSubmitting: () => void;
+}
+
+export const ResultHealthy = ({ description, isLoading, isSubmitting, onSubmitting }: ResultHealthyProps) => {
+  const router = useRouter();
   return (
     <div className="relative grid px-8 py-16 space-y-8 overflow-hidden border bg-light/20 backdrop-blur rounded-xl place-items-center">
       {isLoading ? (
@@ -33,7 +43,12 @@ export const ResultHealthy = ({ description, isLoading, isSubmitting, onSubmitti
 
           {description && (
             <>
-              <Button className="w-full font-semibold border-2 rounded-3xl bg-secondary text-light border-light hover:border-secondary hover:tracking-wider">Dapatkan Tips</Button>
+              <Button
+                onClick={() => router.push("/alyysa-zahra/tips")}
+                className="w-full font-semibold border-2 rounded-3xl bg-secondary text-light border-light hover:border-secondary hover:tracking-wider"
+              >
+                Dapatkan Tips
+              </Button>
               <div className="space-y-2">
                 <div className="flex items-center gap-2 text-light">
                   <Img src="/icons/note.svg" alt="note icon" className="w-10 aspect-square" />

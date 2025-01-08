@@ -23,5 +23,5 @@ export interface HealthyRequest {
   height: string;
   weight: string;
   dateOfBirth: string;
-  activityLevel: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active";
+  activityLevel: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active" | null;
 }

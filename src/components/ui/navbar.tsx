@@ -15,7 +15,10 @@ export const NavbarHome = () => {
         <span className="text-2xl font-bold">BodyCalc</span>
       </div>
       <div className="flex items-center gap-4 bg-gray-200 rounded-3xl">
-        <Button onClick={() => router.push("/login")} className={`font-semibold rounded-3xl ${pathname === "/" ? "bg-primary text-light hover:bg-primary/80" : "bg-transparent text-dark"}`}>
+        <Button
+          onClick={() => router.push("/")}
+          className={`font-semibold rounded-3xl ${pathname === "/" || pathname.includes("tips") ? "bg-primary text-light hover:bg-primary/80" : "bg-transparent text-dark"}`}
+        >
           Beranda
         </Button>
         <Button onClick={() => router.push("/healthy")} className={`font-semibold rounded-3xl ${pathname === "/healthy" ? "bg-primary text-light hover:bg-primary/80" : "bg-transparent text-dark"}`}>

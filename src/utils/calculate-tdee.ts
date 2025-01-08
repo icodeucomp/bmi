@@ -1,7 +1,7 @@
 type Gender = "male" | "female";
-type ActivityLevel = "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active";
+type ActivityLevel = "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active" | null;
 
-export interface User {
+interface User {
   gender: Gender;
   weight: number; // in kg
   height: number; // in cm
@@ -22,7 +22,7 @@ const calculateBMR = (user: User): number => {
 // Function to calculate TDEE
 export const calculateTDEE = (user: User): number => {
   const bmr = calculateBMR(user);
-  const activityMultiplier: Record<ActivityLevel, number> = {
+  const activityMultiplier = {
     sedentary: 1.2,
     "lightly active": 1.375,
     "moderately active": 1.55,
@@ -30,5 +30,5 @@ export const calculateTDEE = (user: User): number => {
     "extra active": 1.9,
   };
 
-  return bmr * activityMultiplier[user.activityLevel];
+  return bmr * activityMultiplier[user.activityLevel!];
 };

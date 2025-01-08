@@ -3,8 +3,8 @@ export interface DropdownProps {
   className: string;
   data: {
     display: string;
-    value: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active";
+    value: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active" | null;
   }[];
-  selectedValue: string;
-  handleFiltered: (value: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active") => void;
+  selectedValue: string | null;
+  handleFiltered: (value: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active" | null) => void;
 }
