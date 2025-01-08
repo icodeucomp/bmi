@@ -6,3 +6,4 @@ export * from "./modal";
 export * from "./motion";
 export * from "./dto";
 export * from "./input";
+export * from "./dropdown";

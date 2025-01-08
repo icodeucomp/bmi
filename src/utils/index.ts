@@ -1,4 +1,3 @@
-export * from "./convert-date";
+export * from "./calculate-age";
+export * from "./calculate-tdee";
 export * from "./shimmer";
-export * from "./formatKebabCase";
-export * from "./formatTitleCase";

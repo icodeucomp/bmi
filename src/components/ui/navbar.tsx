@@ -8,7 +8,6 @@ export const NavbarHome = () => {
   const router = useRouter();
 
   const pathname = usePathname();
-  console.log("🚀 ~ NavbarHome ~ pathname:", pathname);
   return (
     <Container className="flex items-center justify-between py-4">
       <div className="flex items-center gap-4 text-light">
@@ -26,9 +25,9 @@ export const NavbarHome = () => {
           Profil
         </Button>
       </div>
-      <div className="flex gap-4 items-center">
+      <div className="flex items-center gap-4">
         <span className="font-semibold rounded-lg text-dark">Alyysa Zahra</span>
-        <Button onClick={() => router.push("/login")} className="font-medium border-2 rounded-lg bg-red-600 border-light hover:bg-red-700">
+        <Button onClick={() => router.push("/login")} className="font-medium bg-red-600 border-2 rounded-lg border-light hover:bg-red-700">
           Keluar
         </Button>
       </div>

@@ -17,3 +17,11 @@ export interface BmiRequest {
   weight: string;
   dateOfBirth: string;
 }
+
+export interface HealthyRequest {
+  gender: "male" | "female" | null;
+  height: string;
+  weight: string;
+  dateOfBirth: string;
+  activityLevel: "sedentary" | "lightly active" | "moderately active" | "very active" | "extra active";
+}
