@@ -11,23 +11,34 @@ import { Button, Img, Input } from "@/components";
 import { FcGoogle } from "react-icons/fc";
 
 import { registerRequest } from "@/types";
+import { useRouter } from "next/navigation";
+import axios from "axios";
 
 const initValue = { email: "", password: "", firstName: "", lastName: "", gender: null };
 
 export const RegisterForm = () => {
+  const router = useRouter();
+
   const [formData, handleFormData] = useForm<registerRequest>(initValue);
   const [gender, setGender] = React.useState<registerRequest["gender"]>(null);
 
-  const handleSubmit = (e: React.FormEvent<HTMLFormElement>) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
     e.preventDefault();
     const { email, firstName, lastName, password } = formData;
     const body: registerRequest = { email, password, firstName, lastName, gender };
-    console.log(body);
+    try {
+      const response = await axios.post("/api/users/register", body);
+      console.log("🚀 ~ handleSubmit ~ response:", response);
+      // router.push("/login");
+      /* eslint-disable  @typescript-eslint/no-explicit-any */
+    } catch (error: any) {
+      alert(error.message);
+    }
   };
 
   return (
     <div className="w-full p-4 lg:p-8 bg-light rounded-xl">
-      <div className="flex flex-col items-center gap-4 mt-4 text-dark">
+      <div className="flex flex-col items-center gap-4 mt-4 text-dark" onClick={() => router.push("/")}>
         <Img src="/icons/logo.svg" alt="logo" className="size-36" />
         <span className="text-3xl font-bold">Daftar</span>
       </div>

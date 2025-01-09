@@ -11,10 +11,13 @@ import { Button, Img, Input } from "@/components";
 import { FcGoogle } from "react-icons/fc";
 
 import { loginRequest } from "@/types";
+import { useRouter } from "next/navigation";
 
 const initValue = { email: "", password: "" };
 
 export const LoginForm = () => {
+  const router = useRouter();
+
   const [formData, handleFormData] = useForm<loginRequest>(initValue);
 
   const handleSubmit = (e: FormEvent<HTMLFormElement>) => {
@@ -24,7 +27,7 @@ export const LoginForm = () => {
 
   return (
     <div className="w-full p-8 bg-light rounded-xl">
-      <div className="flex flex-col items-center gap-4 mt-4 text-dark">
+      <div className="flex flex-col items-center gap-4 mt-4 text-dark" onClick={() => router.push("/")}>
         <Img src="/icons/logo.svg" alt="logo" className="size-36" />
         <span className="text-3xl font-bold">Daftar</span>
       </div>
